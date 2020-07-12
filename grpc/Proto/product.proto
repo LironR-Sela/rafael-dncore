@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package product;
+
+service ProductCartService {
+  //Unary
+  rpc AddToCart (AddToCartRequest) returns (AddToCartResponse) {}
+
+  //Client Streaming
+  rpc AddMultipleProductsToCart(stream AddMultipleProductsToCartRequest) returns (AddMultipleProductsToCartResponse) {}
+
+  //Server Streaming
+  rpc GetCart(GetCartRequest) returns (stream GetCartResponse) {}
+
+  //Bi-Streaming
+  rpc CalcVATforProduct(stream ClacVATforProductRequest) returns (stream ClacVATforProductResponse) {}
+
+}
+
+message Product {
+  string id = 1;
+  string title = 2;
+  double price = 3;
+}
+
+message AddToCartRequest {
+	Product product =1; //Without id
+}
+
+message AddToCartResponse {
+	Product product = 1; //With id
+}
+
+message AddMultipleProductsToCartRequest {
+	Product product =1;
+}
+
+message AddMultipleProductsToCartResponse {
+	int32 status = 1;
+}
+
+message GetCartRequest {
+
+}
+
+message GetCartResponse {
+	Product product =1;
+}
+
+message ClacVATforProductRequest {
+	Product product =1;
+}
+
+message ClacVATforProductResponse {
+	Product product =1;
+}
+
+
+

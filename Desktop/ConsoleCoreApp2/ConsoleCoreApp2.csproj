@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
+    <TargetFrameworks>netstandard2.0;net40;net45;netcoreapp3.1</TargetFrameworks>
+  </PropertyGroup>
+
+  <!--<ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <Reference Include="System.Net.Http"/>
+    <PackageReference Include="Json.net" Version="4.2"/>
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <Reference Include="System.Net"/>
+    <PackageReference Include="Json.net" Version="7.2"/>
+  </ItemGroup>-->
+
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <Compile Remove="**/*.netfx.cs"/>
+    <None Include="**/*.netfx.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
+    <Compile Remove="**/*.dncore.cs"/>
+    <None Include="**/*.dncore.cs" />
+  </ItemGroup>
+
+
+</Project>
